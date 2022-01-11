@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on January 11, 2022, at 18:32
+    on January 11, 2022, at 20:37
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -36,7 +36,7 @@ os.chdir(_thisDir)
 
 # Store info about the experiment session
 psychopyVersion = '2020.2.4'
-expName = 'GoNoGoTask'  # from the Builder filename that created this script
+expName = 'GoNoGoTaskCoder'  # from the Builder filename that created this script
 expInfo = {'participant': '', 'Session': ''}
 expInfo['date'] = data.getDateStr()  # add a simple timestamp
 expInfo['expName'] = expName
@@ -48,7 +48,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='D:\\Files\\Python Scripts\\PsychoPy Experiments\\Experiment 1\\GoNoGoTask_lastrun.py',
+    originPath='D:\\Files\\Python Scripts\\PsychoPy Experiments\\Experiment 1\\GoNoGoTaskCoder_lastrun.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -87,6 +87,16 @@ IntroText = visual.TextStim(win=win, name='IntroText',
     languageStyle='LTR',
     depth=0.0);
 key_resp_2 = keyboard.Keyboard()
+
+# Initialize components for Routine "pauseRoutine"
+pauseRoutineClock = core.Clock()
+text_3 = visual.TextStim(win=win, name='text_3',
+    text=None,
+    font='Arial',
+    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=0.0);
 
 # Initialize components for Routine "randomisedBreak"
 randomisedBreakClock = core.Clock()
@@ -219,8 +229,77 @@ thisExp.nextEntry()
 # the Routine "Intro" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
+# ------Prepare to start Routine "pauseRoutine"-------
+continueRoutine = True
+routineTimer.add(30.000000)
+# update component parameters for each repeat
+# keep track of which components have finished
+pauseRoutineComponents = [text_3]
+for thisComponent in pauseRoutineComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+pauseRoutineClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "pauseRoutine"-------
+while continueRoutine and routineTimer.getTime() > 0:
+    # get current time
+    t = pauseRoutineClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=pauseRoutineClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *text_3* updates
+    if text_3.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
+        # keep track of start time/frame for later
+        text_3.frameNStart = frameN  # exact frame index
+        text_3.tStart = t  # local t and not account for scr refresh
+        text_3.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text_3, 'tStartRefresh')  # time at next scr refresh
+        text_3.setAutoDraw(True)
+    if text_3.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > text_3.tStartRefresh + 30-frameTolerance:
+            # keep track of stop time/frame for later
+            text_3.tStop = t  # not accounting for scr refresh
+            text_3.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(text_3, 'tStopRefresh')  # time at next scr refresh
+            text_3.setAutoDraw(False)
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in pauseRoutineComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "pauseRoutine"-------
+for thisComponent in pauseRoutineComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('text_3.started', text_3.tStartRefresh)
+thisExp.addData('text_3.stopped', text_3.tStopRefresh)
+
 # set up handler to look after randomisation of conditions etc
-trials = data.TrialHandler(nReps=5, method='random', 
+trials = data.TrialHandler(nReps=10, method='random', 
     extraInfo=expInfo, originPath=-1,
     trialList=data.importConditions('Exp1Conditions.xlsx'),
     seed=None, name='trials')
@@ -310,9 +389,9 @@ for thisTrial in trials:
     
     # ------Prepare to start Routine "Trial"-------
     continueRoutine = True
-    routineTimer.add(1.000000)
+    routineTimer.add(3.000000)
     # update component parameters for each repeat
-    target.setPos((position, 0))
+    target.setPos((0, 0))
     target.setImage(cue_file)
     key_resp_4.keys = []
     key_resp_4.rt = []
@@ -351,7 +430,7 @@ for thisTrial in trials:
             target.setAutoDraw(True)
         if target.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > target.tStartRefresh + 1-frameTolerance:
+            if tThisFlipGlobal > target.tStartRefresh + 3-frameTolerance:
                 # keep track of stop time/frame for later
                 target.tStop = t  # not accounting for scr refresh
                 target.frameNStop = frameN  # exact frame index
@@ -371,7 +450,7 @@ for thisTrial in trials:
             key_resp_4.clearEvents(eventType='keyboard')
         if key_resp_4.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > key_resp_4.tStartRefresh + 1-frameTolerance:
+            if tThisFlipGlobal > key_resp_4.tStartRefresh + 3-frameTolerance:
                 # keep track of stop time/frame for later
                 key_resp_4.tStop = t  # not accounting for scr refresh
                 key_resp_4.frameNStop = frameN  # exact frame index
@@ -388,6 +467,8 @@ for thisTrial in trials:
                     key_resp_4.corr = 1
                 else:
                     key_resp_4.corr = 0
+                # a response ends the routine
+                continueRoutine = False
         
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -429,7 +510,7 @@ for thisTrial in trials:
     trials.addData('key_resp_4.stopped', key_resp_4.tStop)
     thisExp.nextEntry()
     
-# completed 5 repeats of 'trials'
+# completed 10 repeats of 'trials'
 
 
 # ------Prepare to start Routine "End"-------
