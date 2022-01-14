@@ -1,8 +1,8 @@
 ﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy3 Experiment Builder (v2020.2.4),
-    on January 11, 2022, at 20:37
+This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
+    on January 14, 2022, at 16:32
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -15,14 +15,14 @@ from __future__ import absolute_import, division
 
 from psychopy import locale_setup
 from psychopy import prefs
-from psychopy import sound, gui, visual, core, data, event, logging, clock
+from psychopy import sound, gui, visual, core, data, event, logging, clock, colors
 from psychopy.constants import (NOT_STARTED, STARTED, PLAYING, PAUSED,
                                 STOPPED, FINISHED, PRESSED, RELEASED, FOREVER)
 
 import numpy as np  # whole numpy lib is available, prepend 'np.'
 from numpy import (sin, cos, tan, log, log10, pi, average,
                    sqrt, std, deg2rad, rad2deg, linspace, asarray)
-from numpy.random import random, randint, normal, shuffle
+from numpy.random import random, randint, normal, shuffle, choice as randchoice
 import os  # handy system and path functions
 import sys  # to get file system encoding
 
@@ -35,7 +35,7 @@ _thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
 
 # Store info about the experiment session
-psychopyVersion = '2020.2.4'
+psychopyVersion = '2021.2.3'
 expName = 'GoNoGoTaskCoder'  # from the Builder filename that created this script
 expInfo = {'participant': '', 'Session': ''}
 expInfo['date'] = data.getDateStr()  # add a simple timestamp
@@ -48,7 +48,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='D:\\Files\\Python Scripts\\PsychoPy Experiments\\Experiment 1\\GoNoGoTaskCoder_lastrun.py',
+    originPath='C:\\Users\\thoma\\OneDrive - University of Glasgow\\Documents\\Python Scripts\\GoNoGoTaskCoder_lastrun.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -58,11 +58,11 @@ logging.console.setLevel(logging.WARNING)  # this outputs to the screen, not a f
 endExpNow = False  # flag for 'escape' or other condition => quit the exp
 frameTolerance = 0.001  # how close to onset before 'same' frame
 
-# Start Code - component code to be run before the window creation
+# Start Code - component code to be run after the window creation
 
 # Setup the Window
 win = visual.Window(
-    size=[1920, 1080], fullscr=True, screen=0, 
+    size=[1536, 864], fullscr=True, screen=1, 
     winType='pyglet', allowGUI=False, allowStencil=False,
     monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
     blendMode='avg', useFBO=True, 
@@ -73,6 +73,9 @@ if expInfo['frameRate'] != None:
     frameDur = 1.0 / round(expInfo['frameRate'])
 else:
     frameDur = 1.0 / 60.0  # could not measure, so guess
+
+# Setup eyetracking
+ioDevice = ioConfig = ioSession = ioServer = eyetracker = None
 
 # create a default keyboard (e.g. to check for escape)
 defaultKeyboard = keyboard.Keyboard()
@@ -119,6 +122,9 @@ target = visual.ImageStim(
     flipHoriz=False, flipVert=False,
     texRes=128, interpolate=True, depth=0.0)
 key_resp_4 = keyboard.Keyboard()
+sound_1 = sound.Sound('beep.wav', secs=1.0, stereo=True, hamming=True,
+    name='sound_1')
+sound_1.setVolume(1.0)
 
 # Initialize components for Routine "End"
 EndClock = core.Clock()
@@ -299,7 +305,7 @@ thisExp.addData('text_3.started', text_3.tStartRefresh)
 thisExp.addData('text_3.stopped', text_3.tStopRefresh)
 
 # set up handler to look after randomisation of conditions etc
-trials = data.TrialHandler(nReps=10, method='random', 
+trials = data.TrialHandler(nReps=5, method='random', 
     extraInfo=expInfo, originPath=-1,
     trialList=data.importConditions('Exp1Conditions.xlsx'),
     seed=None, name='trials')
@@ -396,8 +402,10 @@ for thisTrial in trials:
     key_resp_4.keys = []
     key_resp_4.rt = []
     _key_resp_4_allKeys = []
+    sound_1.setSound('beep.wav', secs=1.0, hamming=True)
+    sound_1.setVolume(1.0, log=False)
     # keep track of which components have finished
-    TrialComponents = [target, key_resp_4]
+    TrialComponents = [target, key_resp_4, sound_1]
     for thisComponent in TrialComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -469,6 +477,21 @@ for thisTrial in trials:
                     key_resp_4.corr = 0
                 # a response ends the routine
                 continueRoutine = False
+        # start/stop sound_1
+        if sound_1.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            sound_1.frameNStart = frameN  # exact frame index
+            sound_1.tStart = t  # local t and not account for scr refresh
+            sound_1.tStartRefresh = tThisFlipGlobal  # on global time
+            sound_1.play(when=win)  # sync with win flip
+        if sound_1.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > sound_1.tStartRefresh + 1.0-frameTolerance:
+                # keep track of stop time/frame for later
+                sound_1.tStop = t  # not accounting for scr refresh
+                sound_1.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(sound_1, 'tStopRefresh')  # time at next scr refresh
+                sound_1.stop()
         
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -508,9 +531,12 @@ for thisTrial in trials:
         trials.addData('key_resp_4.rt', key_resp_4.rt)
     trials.addData('key_resp_4.started', key_resp_4.tStart)
     trials.addData('key_resp_4.stopped', key_resp_4.tStop)
+    sound_1.stop()  # ensure sound has stopped at end of routine
+    trials.addData('sound_1.started', sound_1.tStartRefresh)
+    trials.addData('sound_1.stopped', sound_1.tStopRefresh)
     thisExp.nextEntry()
     
-# completed 10 repeats of 'trials'
+# completed 5 repeats of 'trials'
 
 
 # ------Prepare to start Routine "End"-------
