@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on January 18, 2022, at 17:38
+    on January 19, 2022, at 09:35
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -319,7 +319,6 @@ for thisTrial_2 in trials_2:
     
     # ------Prepare to start Routine "randomisedBreak"-------
     continueRoutine = True
-    routineTimer.add(1.000000)
     # update component parameters for each repeat
     # keep track of which components have finished
     randomisedBreakComponents = [text_2]
@@ -337,7 +336,7 @@ for thisTrial_2 in trials_2:
     frameN = -1
     
     # -------Run Routine "randomisedBreak"-------
-    while continueRoutine and routineTimer.getTime() > 0:
+    while continueRoutine:
         # get current time
         t = randomisedBreakClock.getTime()
         tThisFlip = win.getFutureFlipTime(clock=randomisedBreakClock)
@@ -355,7 +354,7 @@ for thisTrial_2 in trials_2:
             text_2.setAutoDraw(True)
         if text_2.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > text_2.tStartRefresh + 1-frameTolerance:
+            if tThisFlipGlobal > text_2.tStartRefresh + randint(5,10)-frameTolerance:
                 # keep track of stop time/frame for later
                 text_2.tStop = t  # not accounting for scr refresh
                 text_2.frameNStop = frameN  # exact frame index
@@ -385,6 +384,8 @@ for thisTrial_2 in trials_2:
             thisComponent.setAutoDraw(False)
     trials_2.addData('text_2.started', text_2.tStartRefresh)
     trials_2.addData('text_2.stopped', text_2.tStopRefresh)
+    # the Routine "randomisedBreak" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
     
     # ------Prepare to start Routine "PracticeTrial"-------
     continueRoutine = True
@@ -927,7 +928,7 @@ thisExp.addData('text_4.started', text_4.tStartRefresh)
 thisExp.addData('text_4.stopped', text_4.tStopRefresh)
 
 # set up handler to look after randomisation of conditions etc
-trials = data.TrialHandler(nReps=10, method='random', 
+trials = data.TrialHandler(nReps=5, method='random', 
     extraInfo=expInfo, originPath=-1,
     trialList=data.importConditions('Exp1Conditions.xlsx'),
     seed=None, name='trials')
@@ -947,7 +948,6 @@ for thisTrial in trials:
     
     # ------Prepare to start Routine "randomisedBreak"-------
     continueRoutine = True
-    routineTimer.add(1.000000)
     # update component parameters for each repeat
     # keep track of which components have finished
     randomisedBreakComponents = [text_2]
@@ -965,7 +965,7 @@ for thisTrial in trials:
     frameN = -1
     
     # -------Run Routine "randomisedBreak"-------
-    while continueRoutine and routineTimer.getTime() > 0:
+    while continueRoutine:
         # get current time
         t = randomisedBreakClock.getTime()
         tThisFlip = win.getFutureFlipTime(clock=randomisedBreakClock)
@@ -983,7 +983,7 @@ for thisTrial in trials:
             text_2.setAutoDraw(True)
         if text_2.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > text_2.tStartRefresh + 1-frameTolerance:
+            if tThisFlipGlobal > text_2.tStartRefresh + randint(5,10)-frameTolerance:
                 # keep track of stop time/frame for later
                 text_2.tStop = t  # not accounting for scr refresh
                 text_2.frameNStop = frameN  # exact frame index
@@ -1013,6 +1013,8 @@ for thisTrial in trials:
             thisComponent.setAutoDraw(False)
     trials.addData('text_2.started', text_2.tStartRefresh)
     trials.addData('text_2.stopped', text_2.tStopRefresh)
+    # the Routine "randomisedBreak" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
     
     # ------Prepare to start Routine "ExpTrial"-------
     continueRoutine = True
@@ -1092,7 +1094,7 @@ for thisTrial in trials:
                 key_resp_4.keys = _key_resp_4_allKeys[-1].name  # just the last key pressed
                 key_resp_4.rt = _key_resp_4_allKeys[-1].rt
                 # was this correct?
-                if (key_resp_4.keys == str('')) or (key_resp_4.keys == ''):
+                if (key_resp_4.keys == str(corrAns)) or (key_resp_4.keys == corrAns):
                     key_resp_4.corr = 1
                 else:
                     key_resp_4.corr = 0
@@ -1141,7 +1143,7 @@ for thisTrial in trials:
     if key_resp_4.keys in ['', [], None]:  # No response was made
         key_resp_4.keys = None
         # was no response the correct answer?!
-        if str('').lower() == 'none':
+        if str(corrAns).lower() == 'none':
            key_resp_4.corr = 1;  # correct non-response
         else:
            key_resp_4.corr = 0;  # failed to respond (incorrectly)
@@ -1157,7 +1159,7 @@ for thisTrial in trials:
     trials.addData('sound_1.stopped', sound_1.tStopRefresh)
     thisExp.nextEntry()
     
-# completed 10 repeats of 'trials'
+# completed 5 repeats of 'trials'
 
 
 # ------Prepare to start Routine "End"-------
