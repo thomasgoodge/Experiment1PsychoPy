@@ -512,10 +512,11 @@
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
       </KeyboardComponent>
     </Routine>
+    <Routine name="practiceBreak"/>
   </Routines>
   <Flow>
     <Routine name="Intro"/>
-    <LoopInitiator loopType="TrialHandler" name="PracticeRun">
+    <LoopInitiator loopType="TrialHandler" name="trials_3">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="[{'cue_file': 'images/YellowIcon.png', 'corrAns': None}, {'cue_file': 'images/OrangeIcon.png', 'corrAns': None}, {'cue_file': 'images/StopIcon.png', 'corrAns': 'space'}]" valType="str"/>
       <Param name="conditionsFile" updates="None" val="Exp1Conditions.xlsx" valType="file"/>
@@ -523,13 +524,13 @@
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="random" valType="str"/>
       <Param name="nReps" updates="None" val="2" valType="num"/>
-      <Param name="name" updates="None" val="PracticeRun" valType="code"/>
+      <Param name="name" updates="None" val="trials_3" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
-    <Routine name="randomisedBreak"/>
+    <Routine name="practiceBreak"/>
     <Routine name="PracticeTrial"/>
     <Routine name="blockSelect"/>
-    <LoopInitiator loopType="TrialHandler" name="trials_4">
+    <LoopInitiator loopType="TrialHandler" name="trials">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
       <Param name="conditionsFile" updates="None" val="" valType="file"/>
@@ -537,12 +538,12 @@
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="random" valType="str"/>
       <Param name="nReps" updates="None" val="nRepsCorr" valType="num"/>
-      <Param name="name" updates="None" val="trials_4" valType="code"/>
+      <Param name="name" updates="None" val="trials" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
     <Routine name="Correct"/>
-    <LoopTerminator name="trials_4"/>
-    <LoopInitiator loopType="TrialHandler" name="trials_3">
+    <LoopTerminator name="trials"/>
+    <LoopInitiator loopType="TrialHandler" name="trials_2">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
       <Param name="conditionsFile" updates="None" val="" valType="file"/>
@@ -550,12 +551,12 @@
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="random" valType="str"/>
       <Param name="nReps" updates="None" val="nRepsIncorr" valType="num"/>
-      <Param name="name" updates="None" val="trials_3" valType="code"/>
+      <Param name="name" updates="None" val="trials_2" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
     <Routine name="Incorrect"/>
+    <LoopTerminator name="trials_2"/>
     <LoopTerminator name="trials_3"/>
-    <LoopTerminator name="PracticeRun"/>
     <Routine name="EndOfPractice"/>
     <Routine name="PauseBeforeStart"/>
     <LoopInitiator loopType="TrialHandler" name="Block1">
