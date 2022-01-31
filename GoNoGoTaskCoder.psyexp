@@ -588,21 +588,6 @@
     <Routine name="randomisedBreak"/>
     <Routine name="ExpTrial"/>
     <LoopTerminator name="Block2"/>
-    <Routine name="Break"/>
-    <LoopInitiator loopType="TrialHandler" name="Block3">
-      <Param name="Selected rows" updates="None" val="" valType="str"/>
-      <Param name="conditions" updates="None" val="[{'cue_file': 'images/YellowIcon.png', 'corrAns': None}, {'cue_file': 'images/OrangeIcon.png', 'corrAns': None}, {'cue_file': 'images/StopIcon.png', 'corrAns': 'space'}]" valType="str"/>
-      <Param name="conditionsFile" updates="None" val="Exp1Conditions.xlsx" valType="file"/>
-      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="isTrials" updates="None" val="True" valType="bool"/>
-      <Param name="loopType" updates="None" val="random" valType="str"/>
-      <Param name="nReps" updates="None" val="10" valType="num"/>
-      <Param name="name" updates="None" val="Block3" valType="code"/>
-      <Param name="random seed" updates="None" val="" valType="code"/>
-    </LoopInitiator>
-    <Routine name="randomisedBreak"/>
-    <Routine name="ExpTrial"/>
-    <LoopTerminator name="Block3"/>
     <Routine name="End"/>
   </Flow>
 </PsychoPy2experiment>
